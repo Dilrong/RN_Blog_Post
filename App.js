@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {createStackNavigator, createAppContainer} from "react-navigation";
-import { Provider } from "mobx-react";
+import {createStackNavigator, createAppContainer} from 'react-navigation';
+import { Provider } from 'mobx-react';
 import HomeScreen from './src/HomeScreen';
 import postStore from './src/postStore';
 
@@ -8,7 +8,7 @@ const AppNavigator = createStackNavigator({
   Home: HomeScreen
 }, 
 {
-  initialRouteName: "Home",
+  initialRouteName: 'Home',
   header: null,
   headerMode: 'none'
 });

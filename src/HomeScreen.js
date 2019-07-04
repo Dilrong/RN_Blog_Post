@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, TextInput, Button} from 'react-native';
-import { createStackNavigator, createAppContainer } from "react-navigation";
-import Axios from 'axios';
+import {StyleSheet, View, TextInput, Button, Alert} from 'react-native';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { inject, observer } from 'mobx-react';
+import Axios from 'axios';
 
 @inject('postStore')
 @observer
@@ -21,9 +21,11 @@ class HomeScreen extends Component{
       Axios.post(apiArray[i].url, apiArray[i].data)
       .then((req) => {
         console.log(req)
+        Alert.alert("포스팅 완료"+ req)
       })
       .catch((err) => {
         console.log(err)
+        Alert.alert("포스팅 에러"+ err)
       })
     }
   }
@@ -42,7 +44,7 @@ class HomeScreen extends Component{
             }}
             title="Post"
             color="#2ecc71"
-          />
+        />
       </View>
     );
   }
@@ -67,7 +69,7 @@ const AppNavigator = createStackNavigator({
     }
 },
 {
-    initialRouteName: "Home",
+    initialRouteName: 'Home',
     header: null,
     headerMode: 'none'
 });
