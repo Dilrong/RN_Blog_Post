@@ -27,7 +27,8 @@ npm start
 ## File Structure
 ```
 src
- - src
+ - HomeScreen.js
+ - postStore.js
  App.js
 ```
 
