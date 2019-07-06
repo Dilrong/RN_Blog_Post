@@ -13,7 +13,7 @@ export default class ErrorScreen extends Component{
             style={{width:50, height: 50}}
             source={require('../asset/cancel.png')}
         />
-        <Text>서버에 문제가 발생하였습니다.</Text>
+        <Text style={styles.statusText}>서버에 문제가 발생하였습니다.</Text>
       </View>
     );
   }
@@ -24,5 +24,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
+  statusText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    padding: 10
+  },
 });

@@ -20,11 +20,17 @@ export default class HomeScreen extends Component{
       Axios.post(apiArray[i].url, apiArray[i].data)
       .then((req) => {
         console.log(req)
-        this.props.navigation.navigate('DoneScreen')
+        console.log(i)
+        if((req.status == 200) && (i == Object.keys(apiArray).length-1))
+          this.props.navigation.push('Done')
+        else{
+          this.props.navigation.navigate('Error')
+        }
       })
       .catch((err) => {
         console.log(err)
-        this.props.navigation.navigate('ErrorScreen')
+        if(i == Object.keys(apiArray).length)
+          this.props.navigation.navigate('Error')
       })
     }
   }
