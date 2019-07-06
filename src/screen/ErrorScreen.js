@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import {StyleSheet, View} from 'react-native';
-import {createStackNavigator, createAppContainer} from 'react-navigation';
+import {StyleSheet, View, Image, Text} from 'react-native';
 
-class ErrorScreen extends Component{
+export default class ErrorScreen extends Component{
   constructor(props) {
     super(props);
   }
@@ -10,6 +9,11 @@ class ErrorScreen extends Component{
   render() {
     return (
       <View style={styles.container}>
+        <Image
+            style={{width:50, height: 50}}
+            source={require('../asset/cancel.png')}
+        />
+        <Text>서버에 문제가 발생하였습니다.</Text>
       </View>
     );
   }
@@ -22,22 +26,3 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   }
 });
-
-const AppNavigator = createStackNavigator({
-    Home: {
-      screen: HomeScreen
-    },
-    Done: {
-        screen: DoneScreen
-    },
-    Error: {
-        screen: ErrorScreen
-    }
-},
-{
-    initialRouteName: 'Home',
-    header: null,
-    headerMode: 'none'
-});
-  
-export default createAppContainer(AppNavigator);

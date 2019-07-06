@@ -4,10 +4,12 @@ import { Provider } from 'mobx-react';
 import HomeScreen from './src/screen/HomeScreen';
 import postStore from './src/store/postStore';
 import DoneScreen from './src/screen/DoneScreen';
+import ErrorScreen from './src/screen/ErrorScreen';
 
 const AppNavigator = createStackNavigator({
   Home: HomeScreen,
-  Done: DoneScreen
+  Done: DoneScreen,
+  Error: ErrorScreen
 }, 
 {
   initialRouteName: 'Home',

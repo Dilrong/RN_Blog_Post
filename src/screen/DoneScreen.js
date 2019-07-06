@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import {StyleSheet, View} from 'react-native';
-import {createStackNavigator, createAppContainer} from 'react-navigation';
+import {StyleSheet, View, Image, Text} from 'react-native';
 
-class DoneScreen extends Component{
+export default class DoneScreen extends Component{
   constructor(props) {
     super(props);
   }
@@ -10,6 +9,13 @@ class DoneScreen extends Component{
   render() {
     return (
       <View style={styles.container}>
+        <Image
+          style={{width:50, height: 50}}
+          source={require('../asset/checked.png')}
+        />
+        <Text>포스팅이 완료 되었습니다.</Text>
+        <Text style={styles.link}>http://localhost:3000</Text>
+        <Text style={styles.link}>http://localhost:3001</Text>
       </View>
     );
   }
@@ -20,24 +26,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  link: {
+    fontSize: 12,
+    color: '#3498db'
   }
 });
-
-const AppNavigator = createStackNavigator({
-    Home: {
-      screen: HomeScreen
-    },
-    Done: {
-        screen: DoneScreen
-    },
-    Error: {
-      screen: ErrorScreen
-    }
-},
-{
-    initialRouteName: 'Home',
-    header: null,
-    headerMode: 'none'
-});
-  
-export default createAppContainer(AppNavigator);

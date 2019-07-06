@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, TextInput, Button, Alert} from 'react-native';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import {StyleSheet, View, Text, TextInput, Button, SafeAreaView} from 'react-native';
 import { inject, observer } from 'mobx-react';
 import Axios from 'axios';
 
 @inject('postStore')
 @observer
-class HomeScreen extends Component{
+export default class HomeScreen extends Component{
   constructor(props) {
     super(props);
   }
@@ -25,53 +24,62 @@ class HomeScreen extends Component{
       })
       .catch((err) => {
         console.log(err)
-        Alert.alert("포스팅 에러"+ err)
+        this.props.navigation.navigate('ErrorScreen')
       })
     }
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <TextInput
-          style={styles.textInput}
-          placeholder="내용을 입력해주세요."
-          multiline = {true}
-          onChangeText={(text) => this.props.postStore.text=text}/>
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.header}>Blog Post App</Text>
+        <View style={styles.textInput}>
+          <TextInput
+            placeholder="내용을 입력해주세요."
+            multiline = {true}
+            onChangeText={(text) => this.props.postStore.text=text}/>
+        </View>
+        <View style={styles.postButton}>
           <Button
             onPress={() => {
               this.submitContent();
             }}
             title="Post"
-            color="#2ecc71"
-        />
-      </View>
+            color="#ffffff"
+          />
+        </View>
+      </SafeAreaView>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  header: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    margin: 15,
+    color: '#1abc9c',
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
   textInput: {
-    fontSize: 16,
-    textAlign: 'center',
-    shadowColor: "#000",
+    width: '90%',
+    height: '90%',
+    backgroundColor: '#ffffff',
+    borderRadius: 4,
+    borderWidth: 0.5,
+    borderColor: '#bdc3c7',
+    padding: 10,
   },
+  postButton: {
+    width: '90%',
+    backgroundColor: '#1abc9c',
+    borderRadius: 4,
+    margin: 10,
+    paddingLeft: 5,
+    paddingRight: 5,
+  }
 });
-
-const AppNavigator = createStackNavigator({
-    Home: {
-      screen: HomeScreen
-    }
-},
-{
-    initialRouteName: 'Home',
-    header: null,
-    headerMode: 'none'
-});
-  
-export default createAppContainer(AppNavigator);
