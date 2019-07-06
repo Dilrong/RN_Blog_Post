@@ -1,7 +1,7 @@
 import { observable } from 'mobx';
 
 class PostStore{
-    @observable text = 'hello';
+    @observable text = '';
 }
 
 const postStore = new PostStore();
