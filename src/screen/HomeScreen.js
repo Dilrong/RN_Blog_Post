@@ -21,7 +21,7 @@ class HomeScreen extends Component{
       Axios.post(apiArray[i].url, apiArray[i].data)
       .then((req) => {
         console.log(req)
-        Alert.alert("포스팅 완료"+ req)
+        this.props.navigation.navigate('DoneScreen')
       })
       .catch((err) => {
         console.log(err)

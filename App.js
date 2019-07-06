@@ -3,9 +3,11 @@ import {createStackNavigator, createAppContainer} from 'react-navigation';
 import { Provider } from 'mobx-react';
 import HomeScreen from './src/screen/HomeScreen';
 import postStore from './src/store/postStore';
+import DoneScreen from './src/screen/DoneScreen';
 
 const AppNavigator = createStackNavigator({
-  Home: HomeScreen
+  Home: HomeScreen,
+  Done: DoneScreen
 }, 
 {
   initialRouteName: 'Home',

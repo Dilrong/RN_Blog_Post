@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, TextInput, Button} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
-import Axios from 'axios';
 
-class PostScreen extends Component{
+class ErrorScreen extends Component{
   constructor(props) {
     super(props);
   }
@@ -28,8 +27,11 @@ const AppNavigator = createStackNavigator({
     Home: {
       screen: HomeScreen
     },
-    Post: {
-        screen: PostScreen
+    Done: {
+        screen: DoneScreen
+    },
+    Error: {
+        screen: ErrorScreen
     }
 },
 {
