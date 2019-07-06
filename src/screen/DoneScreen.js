@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Image, Text} from 'react-native';
+import {StyleSheet, View, Image, Text, Button} from 'react-native';
 
 export default class DoneScreen extends Component{
   constructor(props) {
@@ -16,6 +16,15 @@ export default class DoneScreen extends Component{
         <Text style={styles.statusText}>포스팅이 완료 되었습니다.</Text>
         <Text style={styles.link}>http://localhost:3000</Text>
         <Text style={styles.link}>http://localhost:3001</Text>
+        <View style={styles.backButton}>
+          <Button
+            onPress={() => {
+              this.props.navigation.goBack()
+            }}
+            title="< Back"
+            color="#ffffff"
+          />
+        </View>
       </View>
     );
   }
@@ -36,5 +45,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#3498db',
     padding: 5
+  },
+  backButton: {
+    backgroundColor: '#3498db',
+    borderRadius: 4,
+    margin: 10,
+    paddingLeft: 5,
+    paddingRight: 5,
   }
 });

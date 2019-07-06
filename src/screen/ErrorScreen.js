@@ -14,6 +14,15 @@ export default class ErrorScreen extends Component{
             source={require('../asset/cancel.png')}
         />
         <Text style={styles.statusText}>서버에 문제가 발생하였습니다.</Text>
+        <View style={styles.backButton}>
+          <Button
+            onPress={() => {
+              this.props.navigation.goBack()
+            }}
+            title="< Back"
+            color="#ffffff"
+          />
+        </View>
       </View>
     );
   }
@@ -30,4 +39,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     padding: 10
   },
+  backButton: {
+    backgroundColor: '#3498db',
+    borderRadius: 4,
+    margin: 10,
+    paddingLeft: 5,
+    paddingRight: 5,
+  }
 });
