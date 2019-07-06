@@ -10,26 +10,23 @@ export default class HomeScreen extends Component{
     super(props);
   }
 
-  submitContent(){
+  submitContent = async () => {
     const apiArray = [
       {url: 'http://localhost:3000/1/functions/createPost', data:{body: this.props.postStore.text}},
       {url: 'http://localhost:3001/post', data:{content: this.props.postStore.text}}
     ];
 
     for(let i in apiArray){
-      Axios.post(apiArray[i].url, apiArray[i].data)
+      await Axios.post(apiArray[i].url, apiArray[i].data)
       .then((req) => {
         console.log(req)
         console.log(i)
         if((req.status == 200) && (i == Object.keys(apiArray).length-1))
           this.props.navigation.push('Done')
-        else{
-          this.props.navigation.navigate('Error')
-        }
       })
       .catch((err) => {
         console.log(err)
-        if(i == Object.keys(apiArray).length)
+        if(!(req.status == 200) && (i == Object.keys(apiArray).length-1))
           this.props.navigation.navigate('Error')
       })
     }
